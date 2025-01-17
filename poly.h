@@ -16,3 +16,5 @@ void free_poly(poly* p);
 double eval_poly(poly* p, double x);
 
 void print_poly(poly* p);
+
+poly* derive_poly(poly* p);

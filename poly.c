@@ -47,8 +47,8 @@ double eval_poly(poly* p, double x) {
 }
 
 void print_poly(poly* p) {
-    for (size_t i = 0; i <= p->degree; i++) {
-        if (i > 0) {
+    for(size_t i = p->degree; i + 1; i--) {
+        if (i < p->degree) {
             printf(" + ");
         }
         printf("%lf x%ld", p->a[i], i);
@@ -57,4 +57,16 @@ void print_poly(poly* p) {
     free_poly(p);
     
     printf("\n");
+}
+
+poly* derive_poly(poly* p) {
+    poly* res = init_poly();
+
+    for(size_t i = p->degree; i; i--) {
+        poly_set_a(res, i-1, i * p->a[i]);
+    }
+
+    free_poly(p);
+
+    return res;
 }
