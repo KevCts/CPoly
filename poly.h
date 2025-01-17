@@ -18,3 +18,7 @@ double eval_poly(poly* p, double x);
 void print_poly(poly* p);
 
 poly* derive_poly(poly* p);
+
+poly* produit_poly(poly* p, poly* q);
+
+double poly_get_a(poly* p, size_t i);

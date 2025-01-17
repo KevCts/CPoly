@@ -70,3 +70,25 @@ poly* derive_poly(poly* p) {
 
     return res;
 }
+
+double poly_get_a(poly* p, size_t i) {
+    return i <= p->degree ? p->a[i] : 0;
+}
+
+poly* produit_poly(poly* p, poly* q) {
+    poly* res = init_poly();
+    double acc = 0;
+
+    for(size_t i = p->degree + q->degree; i+1; i--) {
+        for(size_t j = 0; j <= i; j++) {
+            acc += poly_get_a(p, j) * poly_get_a(q, i-j);
+        }
+        poly_set_a(res, i, acc);
+        acc = 0;
+    }
+
+    free_poly(p);
+    free_poly(q);
+    
+    return res;
+}
